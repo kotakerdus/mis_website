@@ -17,6 +17,13 @@ $(document).ready(function() {
         $nav.toggleClass('collapse');
     })
 
+    // Hide collapse menu if it was toggled then screen is resized
+    $(window).resize(function() {
+        if($(window).width() >= 850) {
+            $nav.removeClass('collapse');
+        }
+    })
+
     // Owl-carousel for blog
     $('.owl-carousel').owlCarousel({
         loop: true,

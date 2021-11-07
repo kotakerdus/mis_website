@@ -8,6 +8,10 @@ html, body {
 }
 
 :root {
+    /* Layout sizing */
+    --nav-height: 50px;
+    --nav-font-size: 1.6rem;
+
     /* Theme colors */
     --text-gray: #3f4954;
     --text-light: #686666da;
@@ -87,21 +91,23 @@ p {
 
 .nav {
     background: white;
-    padding: 0 2rem;
-    height: 0rem;
-    min-height: 7vh; /* BUG: Menu itmes can still be seen even when the screen is < 750px */
     overflow: hidden;
-    transition: height 1s ease-in-out;
+    transition: height .5s ease-in-out;
+    height: var(--nav-height);
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
 }
 
 .nav .nav-menu {
+    padding: 0 2rem;
     justify-content: space-between;
 }
 
 .nav .toggle-collapse {
     position: absolute;
-    top: 0%;
-    width: 90%;
+    right: 0;
     cursor: pointer;
     display: none;
 }
@@ -109,21 +115,24 @@ p {
 .nav .toggle-collapse .toggle-icons {
     display: flex;
     justify-content: flex-end;
-    padding: 1.7rem 0;
+    padding: 0 2rem;
 }
 
 .nav .toggle-collapse .toggle-icons i {
-    font-size:1.4rem;
+    font-size: var(--nav-font-size);
     color: var(--text-gray);
+    line-height: var(--nav-height);
 }
 
 .collapse {
-    height: 30rem;
+    height: calc(6 * var(--nav-height));
+    padding-bottom: 10px;
 }
 
 .nav .nav-items {
     display: flex;
     margin: 0;
+    padding: 0;
 }
 
 .nav .nav-items .nav-link:hover {
@@ -135,16 +144,27 @@ p {
 }
 
 .nav .nav-items .nav-link {
-    padding: 1.6rem 1rem;
+    padding: 0 1rem;
     font-size: 1.1rem;
     position: relative;
     font-family :var(--Abel);
+    line-height: var(--nav-height);
+}
+
+.nav .nav-brand {
+    line-height: var(--nav-height);
+}
+
+.nav .nav-brand i {
+    font-size: var(--nav-font-size);
+}
+
+.nav .nav-brand a.nav-brand-logo {
+    padding-right: 5px;
 }
 
 .nav .nav-brand a {
-    font-size: 1.6rem;
-    padding: 1rem 0;
-    display: block;
+    font-size: var(--nav-font-size);
     font-family: var(--Lexend);
 }
 
@@ -484,7 +504,6 @@ footer.footer .move-up span:hover {
 }
 
 /* Viewport less than or equal to 1130px */
-
 @media only screen and (max-width: 1130px) {
     .site-content .post-content > .post-image .post-info {
         left: 2rem !important;
@@ -506,9 +525,8 @@ footer.footer .move-up span:hover {
     }
 }
 
-/* Viewport less than or equal to 768px */
-
-@media only screen and (max-width: 768px) {
+/* Viewport less than or equal to 850px */
+@media only screen and (max-width: 850px) {
     .nav .nav-menu, .nav .nav-items {
         flex-direction: column;
     }
@@ -527,11 +545,14 @@ footer.footer .move-up span:hover {
 }
 
 /* Viewport less than or equal to 520px */
-
 @media only screen and (max-width: 520px) {
-    /* main .blog {
-        height: 125vh;
-    } */
+    .nav .nav-brand a{
+        display: none;
+    }
+
+    .nav .nav-brand a.nav-brand-logo {
+        display: initial;
+    }
 
     .site-content .post-content > .post-image .post-info {
         display: none;
@@ -544,9 +565,5 @@ footer.footer .move-up span:hover {
     footer .rights {
         padding: 0 1.4rem;
         text-align: center;
-    }
-
-    nav .toggle-collapse {
-        width: 80% !important;
     }
 }
