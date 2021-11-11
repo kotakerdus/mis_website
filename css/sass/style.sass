@@ -3,7 +3,7 @@
 
 .nav
     background: white
-    border-bottom: solid 1px #00000020
+    border-bottom: solid 1px #00000030
     height: $nav-height
     overflow: hidden
     position: fixed
@@ -12,7 +12,7 @@
     width: 100%
     z-index: 100
 
-    .nav-content
+    .nav-container
         justify-content: space-between
         padding: 0 $left-right-padding
         .nav-brand
@@ -42,7 +42,7 @@
             display: none
             position: absolute
             right: 0
-            &-icon
+            .nav-toggle-icon
                 display: flex
                 justify-content: flex-end
                 padding: 0 30px
@@ -61,58 +61,67 @@
 main
     .banner
         margin-top: $nav-height
-        margin: 95px 20px 0 20px
-        border-radius: 10px
-        // background: url(../assets/images/Background-image.jpg)
-        // background-size: cover
-        background: $accent-color
-        display: flex
-        overflow: hidden
-        flex: 1
-        height: 50vh
-        // justify-content: center
-        // align-content: center
-        .banner-content
-            color: $white
-            margin: 20px
-            flex: 1
-            // padding: 0 $left-right-padding
-            h2, h3
-                margin: auto
-                margin-bottom: 20px
-            .btn
-                background: $sky
-                &:hover
-                    background: transparent
-                    border: 1px solid $white
-                    color: $white
+        .banner-container
+            .banner-post
+                // height: 50vw
+                .banner-content
+                    height: 400px
+                    align-content: center
+                    justify-content: center
+                    color: white
+                    display: flex
+                    flex-direction: column
+                    padding: 0 $left-right-padding
+                    position: absolute
+                    .banner-title
+                        font: 30pt $Lexend
+                        // background: blue
+                    .banner-text
+                        font-size: 16pt
+                        // background: red
+                    .banner-button
+                        padding-top: 20px
+                        // background: orange
+                        .btn::after
+                            background: blue
+                            padding-right: 50px
+                .banner-cover
+                    a
+                        position: absolute
+                        height: 100%
+                        width: 100%
+                    img
+                        height: 100%
+                        max-height: 400px
+                        object-fit: cover
+                        object-position: 0 100% // Pin img from bottom
 
     .blog
-        background-position: right
-        background-repeat: no-repeat
-        background-size: 65%
-        margin-bottom: 4rem
-        width: 100%
-        .blog-post
-            padding-top: 1rem
-            .blog-content
-                background: var(--white)
-                border-radius: 20px
-                box-shadow: 0 15px 20px rgba(0, 0, 0, .2)
-                display: flex
-                flex-direction: column
-                margin: 3rem 2rem
-                overflow: hidden
-                text-align: center
-                width: 85%
-                .blog-title
-                    padding: 2rem 1rem
-                .btn-blog
-                    background: $sky
-                    margin: .5rem
-                    padding: .7rem 2rem
-                span
-                    display: block
+        // background-position: right
+        // background-repeat: no-repeat
+        // background-size: 65%
+        // margin-bottom: 4rem
+        // width: 100%
+        // .blog-post
+        //     padding-top: 1rem
+        //     .blog-content
+        //         background: var(--white)
+        //         border-radius: 20px
+        //         box-shadow: 0 15px 20px rgba(0, 0, 0, .2)
+        //         display: flex
+        //         flex-direction: column
+        //         margin: 3rem 2rem
+        //         overflow: hidden
+        //         text-align: center
+        //         width: 85%
+        //         .blog-title
+        //             padding: 2rem 1rem
+        //         .btn-blog
+        //             background: $sky
+        //             margin: .5rem
+        //             padding: .7rem 2rem
+        //         span
+        //             display: block
 
     .site-content
         display: grid
@@ -128,8 +137,8 @@ main
                     border-radius: 0
                     padding: .7rem 1.5rem
             > .post-image, .post-title
-            padding: 1rem 2rem
-            position: relative
+                padding: 1rem 2rem
+                position: relative
         .post-content > .post-image
             .post-info
                 background: $sky
@@ -213,16 +222,15 @@ main
                     margin: .4rem .6rem
                     padding: .4rem 1rem
 
-
 section .container .owl-nav
-            margin: 0 auto
-            position: absolute
-            top: 0
-            width: 100%
-            .owl-prev .owl-nav-prev, .owl-next .owl-nav-next
-                background: transparent
-                color: $text-gray
-                font-size: 2rem
+    margin: 0 auto
+    position: absolute
+    top: 0
+    width: 100%
+    .owl-prev .owl-nav-prev, .owl-next .owl-nav-next
+        background: transparent
+        color: $text-gray
+        font-size: 2rem
 
 .owl-theme
     .owl-nav [class*='owl-']
@@ -303,11 +311,11 @@ footer
 
 @media only screen and (max-width: 768px)
     .nav
-        .nav-content
+        .nav-container
             &, .nav-items
                 flex-direction: column
-                .nav-link
-                    line-height: 50px
+            .nav-items .nav-link
+                line-height: 50px
             .nav-toggle
                 display: initial
 
@@ -318,8 +326,8 @@ footer
         grid-template-columns: repeat(1, 1fr)
 
 @media only screen and (max-width: 520px)
-    // .nav .nav-content .nav-brand .nav-brand-name
-    //     display: none
+    .nav .nav-container .nav-brand .nav-brand-name
+        display: none
 
     .site-content .post-content > .post-image .post-info
         display: none

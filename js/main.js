@@ -36,11 +36,12 @@ $(document).ready(function () {
         loop: true,
         autoplay: false,
         autoplayTimeout: 3000,
-        dots: true,
-        nav: true,
-        slideTransition: 'ease-in-out',
+        dots: false,
+        // autoHeight:true,
+        // nav: true,
         navText: [$('.owl-navigation .owl-nav-prev'), $('.owl-navigation .owl-nav-next')],
-        responsive: responsive
+        // responsive: responsive,
+        items: 1
     });
 
     // click to scroll up button at the footer
