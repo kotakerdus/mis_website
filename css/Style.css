@@ -63,23 +63,26 @@ p {
   font-family: "Lexend", cursive;
 }
 
+.wrapper {
+  width: 1024px;
+  margin: 0 auto;
+}
+
 .nav {
   background: white;
-  border-bottom: solid 1px #00000030;
-  height: 75px;
+  height: 100px;
   overflow: hidden;
   position: fixed;
   top: 0;
   transition: all 0.3s ease-in-out;
-  width: 100%;
+  width: 1024px;
   z-index: 100;
 }
 .nav .nav-container {
   justify-content: space-between;
-  padding: 0 20px;
 }
 .nav .nav-container .nav-brand {
-  min-height: 75px;
+  min-height: 100px;
 }
 .nav .nav-container .nav-brand .nav-brand-logo {
   display: flex;
@@ -98,7 +101,7 @@ p {
 }
 .nav .nav-container .nav-items .nav-link {
   font: 1.1rem "Abel", cursive;
-  line-height: 75px;
+  line-height: 100px;
   padding: 0 1rem;
 }
 .nav .nav-container .nav-items .nav-link:hover {
@@ -119,7 +122,7 @@ p {
 .nav .nav-container .nav-toggle .nav-toggle-icon i {
   color: grey;
   font-size: 17pt;
-  line-height: 75px;
+  line-height: 100px;
 }
 
 .nav-float {
@@ -132,7 +135,9 @@ p {
 }
 
 main .banner {
-  margin-top: 75px;
+  overflow: hidden;
+  margin-top: 100px;
+  border-radius: 20px;
 }
 main .banner .banner-container .banner-post .banner-content {
   height: 400px;
@@ -370,7 +375,14 @@ footer .rights .move-up span:hover {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 1130px) {
+@media only screen and (max-width: 1024px) {
+  .nav {
+    width: 100%;
+  }
+  .nav .nav-container {
+    padding-left: 20px;
+  }
+
   .site-content .post-content > .post-image .post-info {
     left: 2rem !important;
     bottom: 1.2rem !important;
